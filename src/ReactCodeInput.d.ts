@@ -12,7 +12,7 @@ export type InputModeTypes =
 export interface ReactCodeInputProps {
 
     // Type of input accept
-    type?: 'text' | 'number' | 'password' | 'tel'
+    type?: 'text' | 'number' | 'password' | 'tel' | 'url'
 
     // Allowed amount of characters to enter.
     fields?: number
