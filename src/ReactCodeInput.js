@@ -101,12 +101,15 @@ class ReactCodeInput extends Component {
     }
 
     /** Filter Chars */
-    value = value.split('').filter(currChar => {
-      if (filterCharsIsWhitelist) {
-        return filterChars.includes(currChar);
-      }
-      return !filterChars.includes(currChar);
-    }).join('');
+    value = value
+      .split('')
+      .filter((currChar) => {
+        if (filterCharsIsWhitelist) {
+          return filterChars.includes(currChar);
+        }
+        return !filterChars.includes(currChar);
+      })
+      .join('');
 
     let fullValue = value;
 
@@ -131,9 +134,9 @@ class ReactCodeInput extends Component {
         return false;
       });
 
-      const newTarget = this.textInput[e.target.dataset.id < input.length
-        ? Number(e.target.dataset.id) + 1
-        : e.target.dataset.id];
+      const newTarget = this.textInput[
+        e.target.dataset.id < input.length ? Number(e.target.dataset.id) + 1 : e.target.dataset.id
+      ];
 
       if (newTarget) {
         newTarget.focus();
@@ -157,8 +160,7 @@ class ReactCodeInput extends Component {
       nextTarget = this.textInput[target + 1],
       prevTarget = this.textInput[target - 1];
 
-    let input,
-      value;
+    let input, value;
 
     if (this.state.filterKeyCodes.length > 0) {
       this.state.filterKeyCodes.map((item) => {
@@ -242,9 +244,10 @@ class ReactCodeInput extends Component {
         type,
         autoFocus,
         autoComplete,
+        autoCapitalize,
         pattern,
         inputMode,
-        placeholder
+        placeholder,
       } = this.props,
       { disabled, input, isValid, defaultInputStyle } = this.state,
       styles = {
@@ -289,7 +292,7 @@ class ReactCodeInput extends Component {
               }}
               id={`${this.uuid}-${i}`}
               data-id={i}
-              autoFocus={autoFocus && (i === 0) ? 'autoFocus' : ''}
+              autoFocus={autoFocus && i === 0 ? 'autoFocus' : ''}
               value={value}
               key={`input_${i}`}
               type={type}
@@ -298,6 +301,7 @@ class ReactCodeInput extends Component {
               maxLength={input.length === i + 1 ? 1 : input.length}
               style={styles.input}
               autoComplete={autoComplete}
+              autoCapitalize={autoCapitalize}
               onClick={(e) => e.target.select(e)}
               onBlur={(e) => this.handleBlur(e)}
               onChange={(e) => this.handleChange(e)}
@@ -317,6 +321,7 @@ class ReactCodeInput extends Component {
 
 ReactCodeInput.defaultProps = {
   autoComplete: 'off',
+  autoCapitalize: 'off',
   autoFocus: true,
   isValid: true,
   disabled: false,
@@ -345,6 +350,7 @@ ReactCodeInput.propTypes = {
   inputStyle: PropTypes.object,
   inputStyleInvalid: PropTypes.object,
   autoComplete: PropTypes.string,
+  autoCapitalize: PropTypes.string,
   autoFocus: PropTypes.bool,
   forceUppercase: PropTypes.bool,
   filterKeyCodes: PropTypes.array,
@@ -352,9 +358,18 @@ ReactCodeInput.propTypes = {
   filterCharsIsWhitelist: PropTypes.bool,
   pattern: PropTypes.string,
   inputMode: PropTypes.oneOf([
-    'verbatim', 'latin', 'latin-name', 'latin-prose',
-    'full-width-latin', 'kana', 'kana-name', 'katakana',
-    'numeric', 'tel', 'email', 'url',
+    'verbatim',
+    'latin',
+    'latin-name',
+    'latin-prose',
+    'full-width-latin',
+    'kana',
+    'kana-name',
+    'katakana',
+    'numeric',
+    'tel',
+    'email',
+    'url',
   ]),
 };
 

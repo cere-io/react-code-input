@@ -1,6 +1,6 @@
 {
   "name": "@cere/react-code-input",
-  "version": "3.10.1",
+  "version": "3.11.1",
   "description": "React component for entering and validating numbers, text or password.",
   "main": "dist/ReactCodeInput.js",
   "types": "./src/ReactCodeInput.d.ts",
@@ -101,7 +101,7 @@
     "jsdom-global": "^3.0.2",
     "json-loader": "^0.5.7",
     "memory-fs": "^0.4.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^8.0.0",
     "postcss-loader": "^2.1.5",
     "punycode": "^2.1.0",
     "react-addons-test-utils": "^15.6.2",
