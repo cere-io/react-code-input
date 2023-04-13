@@ -3,7 +3,7 @@ name: Publish package to NPM
 on:
   push:
     branches:
-      - "master"
+      - 'master'
   ? workflow_dispatch
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
       - name: Install packages
-        run: npm ci
+        run: npm ci --legacy-peer-deps
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN_READ}}
       - name: Run Build
